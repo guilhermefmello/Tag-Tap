@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="imageViewLogo" type="id">imageViewLogo</item>
+    <item name="textView" type="id">textView</item>
+    <item name="editTextUrl" type="id">editTextUrl</item>
+    <item name="buttonWriteTag" type="id">buttonWriteTag</item>
+</resources>

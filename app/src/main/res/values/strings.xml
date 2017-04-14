@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TagTap</string>
+    <item name="buttonWriteTag" type="id">buttonWriteTag</item>
+    <item name="editTextUrl" type="id">editTextUrl</item>
+    <item name="textView" type="id">textView</item>
+    <item name="imageViewLogo" type="id">imageViewLogo</item>
 </resources>
