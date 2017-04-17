@@ -4,4 +4,7 @@
     <item name="editTextUrl" type="id">editTextUrl</item>
     <item name="textView" type="id">textView</item>
     <item name="imageViewLogo" type="id">imageViewLogo</item>
+    <item name="linear_layout" type="id">linear_layout</item>
+    <item name="menu_item" type="id">menu_item</item>
+    <item name="nfc_settings_layout" type="id">nfc_settings_layout</item>
 </resources>
