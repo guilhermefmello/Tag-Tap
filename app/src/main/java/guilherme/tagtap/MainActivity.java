@@ -111,16 +111,24 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(context,message,Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(context,"This tag is not writable",Toast.LENGTH_SHORT).show();
-                    Sounds.PlayFailed(context, silent);
+                    //Sounds.PlayFailed(context, silent);
                 }
             } else {
                 Toast.makeText(context,"This tag type is not supported",Toast.LENGTH_SHORT).show();
-                Sounds.PlayFailed(context, silent);
+                //Sounds.PlayFailed(context, silent);
             }
         }
     }
 
 
+    /*
+    * Passing in the NDEF message and find its size and trying to grab the formatted tag. ("writeTag")
+    * Here starts the "try and if methods":
+        * If the tag is NDEF encoded and formatted, this will come back true and we can connect to it.
+        * If the TAG is writable, we can check how much space it has to see if what we are going to write will fit.
+        * If the tag has room, we can write our message on it.  
+        * If we try to write too much, it will fail as an exception in the try/catch statement.
+    */
     public WriteResponse writeTag(NdefMessage message, Tag tag) {
         int size = message.toByteArray().length;
         String mess = "";
@@ -202,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
                 ndef.connect();
                 if (!ndef.isWritable()) {
                     Toast.makeText(context,"Tag is read-only.",Toast.LENGTH_SHORT).show();
-                    Sounds.PlayFailed(context, silent);
+                    //Sounds.PlayFailed(context, silent);
                     ndef.close();
                     return false;
                 }
@@ -211,13 +219,19 @@ public class MainActivity extends AppCompatActivity {
             }
         } catch (Exception e) {
             Toast.makeText(context,"Failed to read tag",Toast.LENGTH_SHORT).show();
-            Sounds.PlayFailed(context, silent);
+            //Sounds.PlayFailed(context, silent);
         }
         return false;
     }
 
 
+
+    /*
+    * Specifying what we are going to write to the tag ('smartwhere.com/nfc.html') and get its bytes and create its payload.
+    *
+    */
     private NdefMessage getTagAsNdef() {
+
         boolean addAAR = false;
         String uniqueId = "smartwhere.com/nfc.html";
         byte[] uriField = uniqueId.getBytes(Charset.forName("US-ASCII"));
