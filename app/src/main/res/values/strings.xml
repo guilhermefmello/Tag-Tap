@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">TagTap</string>
-    <item name="buttonWriteTag" type="id">buttonWriteTag</item>
-    <item name="editTextUrl" type="id">editTextUrl</item>
-    <item name="textView" type="id">textView</item>
-    <item name="imageViewLogo" type="id">imageViewLogo</item>
-    <item name="linear_layout" type="id">linear_layout</item>
-    <item name="menu_item" type="id">menu_item</item>
-    <item name="nfc_settings_layout" type="id">nfc_settings_layout</item>
+    <item name="buttonWriteTag1" type="id">buttonWriteTag</item>
+    <item name="editTextUrl1" type="id">editTextUrl</item>
+    <item name="textView1" type="id">textView</item>
+    <item name="imageViewLogo1" type="id">imageViewLogo</item>
+    <item name="linear_layout1" type="id">linear_layout</item>
+    <item name="menu_item1" type="id">menu_item</item>
+    <item name="nfc_settings_layout1" type="id">nfc_settings_layout</item>
 </resources>

@@ -35,12 +35,30 @@ public class MainActivity extends AppCompatActivity {
     private boolean writeProtect = false;
     private Context context;
 
+    /*
+    public MainActivity() {
+    }
+    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        context = getApplicationContext();
+        mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        mNfcPendingIntent = PendingIntent.getActivity(this, 0, new Intent(this,
+                getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP
+                | Intent.FLAG_ACTIVITY_CLEAR_TOP), 0);
+        IntentFilter discovery=new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
+        IntentFilter ndefDetected = new IntentFilter(NfcAdapter.ACTION_NDEF_DISCOVERED);
+        IntentFilter techDetected = new IntentFilter(NfcAdapter.ACTION_TECH_DISCOVERED);
+        // Intent filters for writing to a tag
+        mWriteTagFilters = new IntentFilter[] { discovery };
     }
+
+
+
 
     //Inflating a Menu.xml
     @Override
@@ -48,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
+
 
     /*
     Checking the NFC adapter, and if it's not enabled, will put a dialog box to take us to our settings to enable it.  
