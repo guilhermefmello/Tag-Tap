@@ -35,10 +35,11 @@ public class MainActivity extends AppCompatActivity {
     private boolean writeProtect = false;
     private Context context;
 
-    /*
-    public MainActivity() {
-    }
-    */
+    //Button btnWrite;
+    //EditText editText;
+    //String uniqueId;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
         IntentFilter techDetected = new IntentFilter(NfcAdapter.ACTION_TECH_DISCOVERED);
         // Intent filters for writing to a tag
         mWriteTagFilters = new IntentFilter[] { discovery };
+
+
+
+
     }
 
 
@@ -108,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         if(mNfcAdapter != null) mNfcAdapter.disableForegroundDispatch(this);
     }
+
+
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
@@ -115,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
             /*
              * validate that this tag can be written ('getParceableExtra()' to get TAG's data)
-             * grabing the list of technologies associated with that tag using 'getTechList()'
+             * grabbing the list of technologies associated with that tag using 'getTechList()'
              * to see if it has the technologies we are trying to support.
             */
             Tag detectedTag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
@@ -151,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
     public WriteResponse writeTag(NdefMessage message, Tag tag) {
         int size = message.toByteArray().length;
         String mess = "";
+
         try {
             Ndef ndef = Ndef.get(tag);
             if (ndef != null) {
@@ -188,7 +196,15 @@ public class MainActivity extends AppCompatActivity {
             mess = "Failed to write tag";
             return new WriteResponse(0,mess);
         }
+
+
+
+
+
     }
+
+
+
     private class WriteResponse {
         int status;
         String message;
@@ -196,6 +212,9 @@ public class MainActivity extends AppCompatActivity {
             this.status = Status;
             this.message = Message;
         }
+
+
+
         public int getStatus() {
             return status;
         }
@@ -203,6 +222,10 @@ public class MainActivity extends AppCompatActivity {
             return message;
         }
     }
+
+
+
+
     public static boolean supportedTechs(String[] techs) {
         boolean ultralight=false;
         boolean nfcA=false;
@@ -222,6 +245,8 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     }
+
+
     private boolean writableTag(Tag tag) {
         try {
             Ndef ndef = Ndef.get(tag);
@@ -245,14 +270,18 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
     /*
     * Specifying what we are going to write to the tag ('smartwhere.com/nfc.html') and get its bytes and create its payload.
     *
     */
     private NdefMessage getTagAsNdef() {
 
+
+
         boolean addAAR = false;
-        String uniqueId = "smartwhere.com/nfc.html";
+        String uniqueId = "linkedin.com/in/GuilhermeFerreiraMello";
         byte[] uriField = uniqueId.getBytes(Charset.forName("US-ASCII"));
         byte[] payload = new byte[uriField.length + 1];       //add 1 for the URI Prefix
         payload[0] = 0x01;                        //prefixes http://www. to the URI
@@ -270,5 +299,14 @@ public class MainActivity extends AppCompatActivity {
                     rtdUriRecord});
         }
     }
+
+
+
+
+
+
+
 }
+
+
 
