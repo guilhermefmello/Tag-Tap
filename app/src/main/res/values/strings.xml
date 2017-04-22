@@ -3,8 +3,10 @@
     <item name="buttonWriteTag1" type="id">buttonWriteTag</item>
     <item name="editTextUrl1" type="id">editTextUrl</item>
     <item name="textView1" type="id">textView</item>
-    <item name="imageViewLogo1" type="id">imageViewLogo</item>
     <item name="linear_layout1" type="id">linear_layout</item>
     <item name="menu_item1" type="id">menu_item</item>
     <item name="nfc_settings_layout1" type="id">nfc_settings_layout</item>
+    <item name="progressBar" type="id">progressBar</item>
+    <item name="Logo" type="id">imageViewLogo1</item>
+    <item name="MainActivityLogo" type="id">Main_Activity_Logo</item>
 </resources>

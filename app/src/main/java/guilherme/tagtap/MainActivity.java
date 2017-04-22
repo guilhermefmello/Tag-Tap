@@ -19,6 +19,8 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -35,16 +37,22 @@ public class MainActivity extends AppCompatActivity {
     private boolean writeProtect = false;
     private Context context;
 
-    //Button btnWrite;
-    //EditText editText;
+    private Button btnWrite;
+    private EditText editText;
     //String uniqueId;
+
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.tagtap);
+
+        //Displaying Logo on Action Bar
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.tagtap_logo_48);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
 
         context = getApplicationContext();
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
@@ -60,6 +68,28 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
+        editText = (EditText) findViewById(R.id.editTextUrl);
+        btnWrite = (Button)findViewById(R.id.buttonWriteTag);
+
+        btnWrite.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+
+            public void onClick(View v) {
+
+
+                getTagAsNdef();
+
+                Toast.makeText(context, "Tap a Tag to Record your URL.", Toast.LENGTH_LONG).show();
+
+            }
+
+        });
+
+
+
     }
 
 
@@ -70,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
+
     }
 
 
@@ -173,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 ndef.writeNdefMessage(message);
                 if(writeProtect) ndef.makeReadOnly();
-                mess = "Wrote message to pre-formatted tag.";
+                mess = "URL Saved Successfully!";
                 return new WriteResponse(1,mess);
             } else {
                 NdefFormatable format = NdefFormatable.get(tag);
@@ -281,7 +312,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         boolean addAAR = false;
-        String uniqueId = "linkedin.com/in/GuilhermeFerreiraMello";
+        String uniqueId = editText.getText().toString();
+        //String uniqueId = "linkedin.com/in/GuilhermeFerreiraMello";
         byte[] uriField = uniqueId.getBytes(Charset.forName("US-ASCII"));
         byte[] payload = new byte[uriField.length + 1];       //add 1 for the URI Prefix
         payload[0] = 0x01;                        //prefixes http://www. to the URI
@@ -299,6 +331,24 @@ public class MainActivity extends AppCompatActivity {
                     rtdUriRecord});
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
