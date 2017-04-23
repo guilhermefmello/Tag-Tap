@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.Uri;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
@@ -17,6 +18,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -66,10 +68,7 @@ public class MainActivity extends AppCompatActivity {
         mWriteTagFilters = new IntentFilter[] { discovery };
 
 
-
-
-
-
+        //Adding button to retrieve the URL in the EditText field
         editText = (EditText) findViewById(R.id.editTextUrl);
         btnWrite = (Button)findViewById(R.id.buttonWriteTag);
 
@@ -99,9 +98,41 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
+
         return true;
 
     }
+
+
+    //Adding a Action to the Option in the Menu Bar.
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_item:
+
+                goToUrl ( "https://github.com/guilhermefmello/TagTap");
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+    //Getting the URL and Open the page using the browser
+    private void goToUrl (String url) {
+        Uri uriUrl = Uri.parse(url);
+        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+        startActivity(launchBrowser);
+    }
+
+
+
+
+
+
+
+
 
 
     /*
@@ -331,27 +362,6 @@ public class MainActivity extends AppCompatActivity {
                     rtdUriRecord});
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

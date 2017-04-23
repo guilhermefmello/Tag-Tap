@@ -4,8 +4,9 @@
 
     <item
         android:id="@+id/menu_item"
-        android:icon="@mipmap/ic_launcher_round"
-        android:title="NFC Settings"
+        android:icon="@drawable/tagtap_logo_48"
+        android:title="About TagTap Project"
+
 
 
         />
