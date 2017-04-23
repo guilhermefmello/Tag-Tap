@@ -29,6 +29,15 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.nio.charset.Charset;
 
+
+    /*
+    *Tag & Tap
+    * NFC Application
+    *Author: Guilherme Ferreira Mello
+    *Releasing: 23/04/2017
+    */
+
+
 public class MainActivity extends AppCompatActivity {
 
 
