@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         //Adding button to retrieve the URL in the EditText field
         editText = (EditText) findViewById(R.id.editTextUrl);
         btnWrite = (Button)findViewById(R.id.buttonWriteTag);
+        final MediaPlayer myMediabtSinglePlayer = MediaPlayer.create(this, R.raw.button_sound1);
 
         btnWrite.setOnClickListener(new View.OnClickListener() {
 
@@ -78,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
             public void onClick(View v) {
 
-
+                myMediabtSinglePlayer.start();
                 getTagAsNdef();
 
                 Toast.makeText(context, "Tap a Tag to Record your URL.", Toast.LENGTH_LONG).show();
