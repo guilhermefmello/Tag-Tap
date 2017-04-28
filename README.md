@@ -1,5 +1,9 @@
 ABOUT NFC TECHNOLOGY AND TAG&TAP!
 
+YouTube Videos: 
+TAG&TAP Demo 1: https://www.youtube.com/watch?v=4vOmOV9wsg4&feature=youtu.be
+TAG&TAP Demo 2: https://www.youtube.com/watch?v=BpaBmnWq9Zk&feature=youtu.be
+
 1.	History:
 NFC (Near Field Communication) came out of RFID. RFID, or radio-frequency identification, is the technology used by shipping companies, in large warehouses, and in superstores to keep track of goods. It uses electromagnetic induction in order to transmit information over a short space so that by simply scanning a container a staff member can know what it contains. NFC is similar technology, but standardized for consumer smartphones. NFC standards are defined by a group called the NFC Forum, which includes Nokia, Sony and Philips.
 
